@@ -1,11 +1,20 @@
-
+import { useState, useEffect } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-
+import TodoList from "./components/todoList.jsx";
 
 function App() {
+  const [todos, setTodos] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3030/jsonstore/todos").then((response) =>
+      response.json().then((data) => {
+        setTodos(Object.values(data));
+      })
+    );
+  }, []);
+
   return (
-    <body>
+    <div>
       <Header />
 
       <main className="main">
@@ -25,21 +34,13 @@ function App() {
                   <th className="table-header-action">Action</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr className="todo is-completed">
-                  <td>Give dog a bath</td>
-                  <td>Complete</td>
-                  <td className="todo-action">
-                    <button className="btn todo-btn">Change status</button>
-                  </td>
-                </tr>
-              </tbody>
+              <TodoList todos={todos} />
             </table>
           </div>
         </section>
       </main>
       <Footer />
-    </body>
+    </div>
   );
 }
 
