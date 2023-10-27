@@ -124,6 +124,21 @@ body {
   width: 100%;
 }
 
+.add-btn-container input {
+  font-family: monospace;
+  font-size: 16px;
+  position: relative;
+  right: 20px
+}
+
+.add-btn-container label {
+  right:30px;
+  font-family: monospace;
+  font-size: 16px;
+  position: relative;
+  right:30px
+}
+
 /* Loading spinner */
 
 .loading-container {
@@ -257,6 +272,7 @@ body {
 }
 
 .todo-action .todo-btn {
+  margin-right: 15px;
   background: #24292f;
   border: none;
   padding: 5px 10px;
